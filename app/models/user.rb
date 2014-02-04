@@ -3,4 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable ,:registerable,
   devise :database_authenticatable,:registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :messages
+
+  def user_email
+
+  end
+
 end

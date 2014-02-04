@@ -9,9 +9,9 @@ $ ->
   scrollDown()
 
   $('[type=submit]').click (e) ->
-
+    window.alert("i am in..")
     nick = $('[name=nick]')
-    message = $('[name=msg]')
+    message = $('[name=message[msg]]')
     e.preventDefault()
 
     $.ajax
@@ -34,14 +34,14 @@ $ ->
       success: (data, status, xhr) ->
         for messageObject in data
           messageRow = $("<div class='message'></div>")
-          timestamp = $("<span class='timestamp'></span>")
+          timestamp = $("<span class='timestamp'>&nbsp</span>")
           timestamp.text(messageObject.time)
 
           nick = $("<span class='nick'></span>")
-          nick.text(messageObject.nick)
+          nick.text(messageObject.user_id)
 
           message = $("<span class='message-text'></span>")
-          message.text(messageObject.message)
+          message.text(messageObject.msg)
 
           messageRow.append(nick)
           messageRow.append(timestamp)

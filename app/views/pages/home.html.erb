@@ -2,3 +2,19 @@ this is home page
 <%= link_to 'login', new_user_session_path  unless user_signed_in? %>
 <%= link_to 'logout', destroy_user_session_path, method: "delete" if user_signed_in? %>
 
+
+<% if user_signed_in? %>
+<div id="chat" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+</div>
+
+<div class="form-inline well">
+  <%= form_tag do %>
+
+    <%= text_field_tag :user ,current_user.email  %>
+      <%= text_field_tag :message   %>
+
+    <button id="send" class="btn btn-primary"  type="submit">Send</button>
+
+   <% end %>
+</div>
+<% end  %>

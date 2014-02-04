@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131044358) do
+ActiveRecord::Schema.define(version: 20140204051226) do
+
+  create_table "channels", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.integer  "user_id"
     t.text     "msg"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "channel_id"
   end
 
   create_table "users", force: true do |t|
@@ -33,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140131044358) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "isadmin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

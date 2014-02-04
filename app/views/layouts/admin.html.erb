@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CBox</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id = "main">
+
+  <div id ="admin_header">
+    <%= link_to 'Logout'   %>&nbsp||&nbsp
+    <%= link_to 'Users',admin_users_path  %>&nbsp||&nbsp
+    <%= link_to 'Messages', admin_messages_path %>&nbsp||&nbsp
+    <%= link_to 'Channels', admin_channels_path %>&nbsp||&nbsp
+    <%= link_to ' '  %>&nbsp||&nbsp
+
+
+
+  </div>
+
+
+  <%= yield %>
+
+
+</div>
+
+</body>
+</html>
