@@ -9,21 +9,25 @@
 <body>
 <div id = "main">
 
-  <div id ="admin_header">
-    <%= link_to 'Logout'   %>&nbsp||&nbsp
-    <%= link_to 'Users',admin_users_path  %>&nbsp||&nbsp
-    <%= link_to 'Messages', admin_messages_path %>&nbsp||&nbsp
-    <%= link_to 'Channels', admin_channels_path %>&nbsp||&nbsp
-    <%= link_to ' '  %>&nbsp||&nbsp
-
-
-
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+         <li> <%= link_to 'Logout',destroy_user_session_path, method: "delete"   %></li>
+          <li><%= link_to 'Users',admin_users_path  %></li>
+          <li><%= link_to 'Messages', admin_messages_path %></li>
+          <li><%= link_to 'Channels', admin_channels_path %></li>
+          <li><%= link_to 'Chat Page ', home_path  %>
+        </ul>
+      </div>
+    </div>
   </div>
 
+  <div class="container">
 
   <%= yield %>
 
-
+</div>
 </div>
 
 </body>

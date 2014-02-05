@@ -1,5 +1,5 @@
-<h1>Listing channels</h1>
-
+ <h1>Listing channels</h1>
+<div class = "hero-unit">
 <table>
   <thead>
     <tr>
@@ -14,15 +14,15 @@
     <% @channels.each do |channel| %>
       <tr>
         <td><%= channel.name %></td>
-        <td><%= link_to 'Show', admin_channel_path(channel) %></td>
-        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
-        <td><%= link_to 'Destroy', [:admin ,channel], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_channel_path(channel) ,:class=>"btn" %></td>
+        <td><%= link_to 'Edit', edit_admin_channel_path(channel),:class=>"btn" %></td>
+        <td><%= link_to 'Destroy', [:admin ,channel], method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn" %></td>
 
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
-<%= link_to 'New Channel', new_admin_channel_path %>
+<%= link_to 'New Channel', new_admin_channel_path,:class=>"btn" %>

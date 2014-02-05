@@ -1,9 +1,9 @@
 <br/>
 <br/>
 
-<%= link_to 'ADD Admin', new_admin_user_path %>
+<%= link_to 'ADD User', new_admin_user_path,:class=>"btn" %>
 
-
+<div class = "hero-unit">
     <table>
       <thead><td><b>Email</b></td></thead>
 
@@ -11,8 +11,8 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= user.email  %></td>
-         <td><%= link_to 'change Password', edit_admin_user_url(user) %></td>
-        <td><%= link_to 'delete' %>
+         <td><%= link_to 'change Password', edit_admin_user_url(user) ,:class=>"btn"%></td>
+        <td><%= link_to 'delete',:class=>"btn" %>
       </tr>
      </tbody>
 <% end %>
@@ -20,4 +20,4 @@
      </table>
 
 
-
+</div>

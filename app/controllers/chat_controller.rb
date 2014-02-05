@@ -17,22 +17,26 @@ class ChatController < WebsocketRails::BaseController
   
   def user_msg(ev, msg)
 
-    broadcast_message ev, { 
+    broadcast_message ev, {
       user_name:  connection_store[:user][:user_name],
-      received:   Time.now.to_s(:short), 
+      received:   Time.now.to_s(:short),
       msg_body:   ERB::Util.html_escape(msg)
       }
   end
   
   def client_connected
     system_msg :new_message, "client #{session[:user_id]} connected"
+
   end
-  
+
+
+
   def new_message
+    channel_id = message[:channel_id]
     screen_msg = message[:msg_body]
-    user_msg :new_message, screen_msg
-    message = Message.create(:user_id => '1', :msg => screen_msg)
-    message.save
+    user_msg :new_message,screen_msg
+    #message = Message.create(:user_id => '1', :msg => screen_msg)
+    #message.save
 
   end
   

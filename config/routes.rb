@@ -3,12 +3,22 @@ CBox::Application.routes.draw do
 
   resources :messages
 
+
+
+
+
+  authenticated :user do
+    root :to => 'pages#home', :as => :authenticated_root
+  end
+
   devise_for :users,controllers: {sessions: "sessions"}
 
     devise_scope :user do
       root to: "devise/sessions#new"
     end
    get '/home' => 'pages#home'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -24,7 +34,6 @@ CBox::Application.routes.draw do
     resources :users
     resources :messages
     resources :channels
-
   end
 
   get 'outgoing' => 'messages#outgoing'

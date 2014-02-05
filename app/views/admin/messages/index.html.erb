@@ -1,5 +1,5 @@
 <h1>Listing messages</h1>
-
+<div class = "hero-unit">
 <table>
   <thead>
     <tr>
@@ -16,14 +16,14 @@
       <tr>
         <td><%= message.user.email if message.user.present?  %></td>
         <td><%= message.msg %></td>
-        <td><%= link_to 'Show', admin_message_path(message) %></td>
-        <td><%= link_to 'Edit', edit_admin_message_path(message) %></td>
-        <td><%= link_to 'Destroy', [:admin, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_message_path(message) ,:class=>"btn"%></td>
+        <td><%= link_to 'Edit', edit_admin_message_path(message),:class=>"btn" %></td>
+        <td><%= link_to 'Destroy', [:admin, message], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
-<%= link_to 'New Message', new_admin_message_path %>
+<%= link_to 'New Message', new_admin_message_path,:class=>"btn" %>
