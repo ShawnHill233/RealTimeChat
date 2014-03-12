@@ -11,7 +11,7 @@ CBox::Application.routes.draw do
     root :to => 'pages#home', :as => :authenticated_root
   end
 
-  devise_for :users,controllers: {sessions: "sessions"}
+ devise_for :users,controllers: {sessions: "sessions"}
 
     devise_scope :user do
       root to: "devise/sessions#new"
