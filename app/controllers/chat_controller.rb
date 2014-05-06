@@ -33,10 +33,10 @@ class ChatController < WebsocketRails::BaseController
 
   def new_message
     channel_id = message[:channel_id]
-    screen_msg = message[:msg_body]
-    user_msg :new_message,screen_msg
-    #message = Message.create(:user_id => '1', :msg => screen_msg)
-    #message.save
+    screen_msg = message[:msg_body].chop!
+    user_msg :new_message,screen_msg.chop
+    message = Message.create(:user_id => '1', :msg => screen_msg)
+    message.save
 
   end
   

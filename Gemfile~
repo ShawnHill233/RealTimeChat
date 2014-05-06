@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 
 #devise for login
-gem 'devise'
+
 
 gem 'twitter-bootstrap-rails'
 gem "less-rails"
