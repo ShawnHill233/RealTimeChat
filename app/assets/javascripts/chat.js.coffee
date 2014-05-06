@@ -10,7 +10,7 @@ class Chat.User
 class Chat.Controller
   template: (message) ->
     html =
-      """
+    """
       <div class="message" >
         <label class="label label-info">
           [#{message.received}] #{message.user_name}
