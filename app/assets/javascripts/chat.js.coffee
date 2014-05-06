@@ -37,7 +37,7 @@ class Chat.Controller
     @dispatcher.bind 'user_list', @updateUserList
     $('input#user_name').on 'keyup', @updateUserInfo
     $('#send').on 'click', @sendMessage
-    $('#message').keypress (e) -> $('#send').click() if e.keyCode == 13
+   # $('#message').keypress (e) -> $('#send').click() if e.keyCode == 13
 
   newMessage: (message) =>
     @messageQueue.push message
@@ -49,8 +49,7 @@ class Chat.Controller
     event.preventDefault()
     message = $('#message').val()
     channel = $('#channel').val()
-    user    = $('#user').val()
-    @dispatcher.trigger 'new_message', {user_name: user, msg_body: message , channel_id: channel}
+    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message , channel_id: channel}
     $('#message').val('')
 
   updateUserList: (userList) =>

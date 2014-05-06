@@ -18,14 +18,14 @@ class ChatController < WebsocketRails::BaseController
   def user_msg(ev, msg)
 
     broadcast_message ev, {
-        user_name:  connection_store[:user][:user_name],
+        user_name:  current_user.email,
         received:   Time.now.to_s(:short),
-        msg_body:   ERB::Util.html_escape(msg)
+        msg_body:   ERB::Util.html_escape(msg.chomp)
     }
   end
 
   def client_connected
-    system_msg :new_message, "client #{session[:user_id]} connected"
+    system_msg :new_message, "client #{current_user.email} connected"
 
   end
 
@@ -33,10 +33,10 @@ class ChatController < WebsocketRails::BaseController
 
   def new_message
     channel_id = message[:channel_id]
-    screen_msg = message[:msg_body]
-    user_msg :new_message,screen_msg.to_s.chomp
-    message = Message.create(:user_id => '1', :msg => screen_msg)
-    message.save
+    screen_msg = message[:msg_body].chomp
+    user_msg :new_message,screen_msg
+   # message = Message.create(:user_id => '1', :msg => screen_msg)
+   #  message.save
 
   end
 
