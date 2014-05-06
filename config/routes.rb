@@ -7,9 +7,7 @@ CBox::Application.routes.draw do
 
 
 
-  authenticated :user do
-    root :to => 'pages#home', :as => :authenticated_root
-  end
+   
 
  devise_for :users,controllers: {sessions: "sessions"}
 
